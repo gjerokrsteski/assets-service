@@ -1,4 +1,4 @@
-# Assets-Service
+# Assets-Service [![Build Status](https://travis-ci.org/gjerokrsteski/assets-service.svg?branch=master)](https://travis-ci.org/gjerokrsteski/assets-service)
 
 A minimal HTTP Server for delivering static assets like JS bundles. 
 Ideal for integrating and serving Micro Frontends like SPAs as well as CSS files.
