@@ -1,14 +1,8 @@
 const crypto = require('crypto')
 const express = require('express');
 const router = express.Router();
-const Promise = require('bluebird');
-const error = require('../utils/error');
-const fs = Promise.promisifyAll(require('fs'));
 const version = require('../package.json').version;
-const defaultConfig = require('../package.json').defaultOptions;
 const reunite = require('../reunite');
-const commandline = Object.assign({}, defaultConfig, require('../commandline'));
-const DIR = commandline.dir;
 
 const methods = (methods = ['GET']) => (req, res, next) => {
     if (methods.includes(req.method)) {
@@ -47,33 +41,11 @@ router.get('/embed', function(req, res){
 router.get('/embed_test', function(req, res) {
     res.render('embed_test', {
         config_id: (typeof req.param('config_id') !== 'undefined') ? req.param('config_id') : 'Demo',
-        dom_id: (typeof req.param('dom_id') !== 'undefined') ? req.param('dom_id') : 'regina',
+        dom_id: (typeof req.param('dom_id') !== 'undefined') ? req.param('dom_id') : 'spa',
         no_load_status: (typeof req.param('no_load_status') !== 'undefined') ? req.param('no_load_status') : '0'
     });
 });
 
-// Custom features for Project FMShop
-router.get('/fmshop_embed', function(req, res) {
-    fs.readdirAsync(DIR)
-        .then(files => files.find((file) => file.startsWith('bundle') && file.endsWith('.js')))
-        .then(bundleFileName => {
-            if (bundleFileName) {
-                return fs.readFileAsync(DIR + '/' + bundleFileName, 'utf8')
-            }
-            else {
-                return error('Bundle JS file not found at directory');
-            }
-            })
-        .then((bundleFile) => {
-            //send cache friendly headers
-            res.header("Content-Type", "application/javascript");
-            // res.header("ETag", weakETag(bundleFile));
-            res.header("Connection", "keep-alive");
-
-            return res.status(200).end(bundleFile);
-        })
-        .catch(() => error('Reading bundle JS file failed'));
-});
 /**
  * @param req
  * @param res
