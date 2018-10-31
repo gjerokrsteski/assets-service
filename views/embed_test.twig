@@ -1,0 +1,12 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+
+    {% if no_load_status == 1 %}
+        <div id="dummy" style="display:none"></div>
+    {% endif %}
+
+    <div id="{{dom_id}}"></div>
+    <script src="/embed?config_id={{config_id}}&dom_id={{dom_id}}"></script>
+
+{% endblock %}

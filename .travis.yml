@@ -1,0 +1,7 @@
+os: linux
+language: node.js
+node_js:
+  - "9"
+  - "10"
+script:
+  - ./local-pipeline.sh

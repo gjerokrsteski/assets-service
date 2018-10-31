@@ -1,0 +1,21 @@
+!*/.gitkeep
+
+# nodejs specific
+node_modules
+npm-debug.log
+
+# editor
+.vscode
+.idea
+
+# service specific
+apiState.json
+coverage/
+pidfile
+test-pidfile
+/production/*
+*.log
+logs/*
+tmp/*
+/coverage/*
+/tmp/*

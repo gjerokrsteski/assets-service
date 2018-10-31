@@ -1,0 +1,61 @@
+variables:
+  DOCKER_DRIVER: overlay2
+
+image: node:6.11.4
+
+stages:
+  - integrate
+  - lint
+  - test
+  - compile
+  - integration_test
+  - artifacts
+
+cache:
+  untracked: true
+  key: "${CI_PROJECT_NAME}-${CI_BUILD_REF_NAME}"
+  paths:
+  - node_modules/
+  - production/
+
+integrate dependencies:
+  stage: integrate
+  script:
+    - ./install.sh
+
+lint js:
+  stage: lint
+  script:
+    - ./lint.sh
+
+test:
+  stage: test
+  script:
+    - ./test.sh
+
+compile binary:
+  stage: compile
+  only:
+    - tags
+  script:
+    - sed -i "s|0.0.0|${CI_COMMIT_TAG}|1" ./package.json
+    - ./compile.sh
+
+test binary:
+  stage: integration_test
+  only:
+    - tags
+  script:
+    - ./test-integration.sh
+
+artifacts:
+  stage: artifacts
+  only:
+    - tags
+  script:
+    - echo "Start packing artifacts..."
+  artifacts:
+    name: "${CI_PROJECT_NAME}-${CI_COMMIT_TAG}"
+    paths:
+     - production/bin/
+    expire_in: 1 month
