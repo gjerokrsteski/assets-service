@@ -10,9 +10,6 @@ assert_exit_code "ERROR integrating dependencies"
 ./lint.sh
 assert_exit_code "ERROR linting js"
 
-./audit.sh
-assert_exit_code "ERROR auditing js"
-
 ./test.sh
 assert_exit_code "ERROR testing units"
 
