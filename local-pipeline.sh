@@ -2,8 +2,6 @@
 
 . ./ci-scripts/build-functions.sh
 
-rm -rf ./node_modules
-
 ./install.sh
 assert_exit_code "ERROR integrating dependencies"
 
