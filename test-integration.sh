@@ -3,7 +3,7 @@
 . ./ci-scripts/build-functions.sh
 
 print_info "Start server..."
-yarn run start -- --port=6767 &
+npm run start -- --port=6767 &
 sleep 2
 
 print_info "Test if service responds HTTP 404 at /fonts route if no asset file specified"
