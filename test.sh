@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 set -e
-npm run test --
+yarn test 

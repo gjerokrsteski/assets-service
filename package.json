@@ -28,6 +28,9 @@
     "winston": "~3.2.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",

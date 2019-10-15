@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 set -e
-npm install
+yarn install --no-lockfile
