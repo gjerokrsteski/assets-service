@@ -1,9 +1,6 @@
 const defaultConfig = require('../package.json').defaultOptions;
 const commandline = Object.assign({}, defaultConfig, require('../commandline'));
-
 var winston = require('winston');
-winston.emitErrs = true;
-
 var logger = new winston.Logger({
     transports: [
         new winston.transports.File({
@@ -24,9 +21,7 @@ var logger = new winston.Logger({
     ],
     exitOnError: false
 });
-
 module.exports = logger;
-
 module.exports.stream = {
     write: function(message){
         let responseStatus = Number(JSON.parse(message).status);
@@ -35,7 +30,6 @@ module.exports.stream = {
             : logger.debug(message);
     }
 };
-
 module.exports.httpLogStructure = {
     "remote_addr": ":remote-addr", 
     "remote_user": ":remote-user", 
