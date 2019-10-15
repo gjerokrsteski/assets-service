@@ -2,11 +2,11 @@
 
 . ./ci-scripts/build-functions.sh
 
+npm upgrade
+assert_exit_code "ERROR npm upgrade"
+
 ./install.sh
 assert_exit_code "ERROR integrating dependencies"
-
-./audit.sh
-assert_exit_code "ERROR auditing npm packages"
 
 ./lint.sh
 assert_exit_code "ERROR linting js"
