@@ -2,9 +2,6 @@
 
 . ./ci-scripts/build-functions.sh
 
-npm upgrade
-assert_exit_code "ERROR npm upgrade"
-
 ./install.sh
 assert_exit_code "ERROR integrating dependencies"
 
