@@ -1,7 +1,7 @@
 const defaultConfig = require('../package.json').defaultOptions;
 const commandline = Object.assign({}, defaultConfig, require('../commandline'));
 var winston = require('winston');
-var logger = new winston.Logger({
+var logger = winston.createLogger({
     transports: [
         new winston.transports.File({
             level: 'error',
