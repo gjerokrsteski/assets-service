@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node server.js",
-    "test": "jest ./test",
+    "test": "jest --verbose --detectOpenHandles --runInBand --forceExit ./test",
     "lint": "eslint . --max-warnings 0",
     "compile": "node compile.js",
     "test:final": "npm run lint && npm run test"

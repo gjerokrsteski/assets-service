@@ -1,5 +1,4 @@
 const shell = require('shelljs');
-
 const reunite = require('../reunite');
 
 describe('embed', () => {
